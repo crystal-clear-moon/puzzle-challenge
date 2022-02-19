@@ -1,0 +1,80 @@
+$white: #FFFFFF;
+$black: #000000;
+$yellow: yellow;
+$transparent: transparent;
+$green: rgb(102, 255, 0);
+$gray: #d9d9d9;
+
+html, body {
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+}
+
+#root {
+    width: 100vw;
+    display: flex;
+}
+
+.puzzle {
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(5, 100px);
+    border: 1px solid $black;
+    margin: auto;
+    position: relative;
+    // overflow: hidden;
+
+    .start {
+        background-color: $yellow;
+    }
+
+    .last {
+        background-color: $green;
+    }
+
+    & > div:not(.dot-box, .progress){
+        border: 1px solid $black;
+    }
+
+    .gray {
+        background-color: $gray;
+    }
+
+    .dot-box {
+        background-color: $transparent;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        display: flex;
+        border: 1px solid $transparent;
+        box-sizing: border-box;
+        transition: all 0.23s linear;
+
+        .dot{
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            border: 2px solid $black;
+            background-color: $white;
+            margin: auto;
+        }
+    }
+
+    .progress {
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .lose {
+            color: red;
+        }
+        .win {
+            color: $green;
+        }
+    }
+}
